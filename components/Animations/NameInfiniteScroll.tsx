@@ -107,13 +107,13 @@ const NameInfiniteScroll = () => {
       )}
 
       {tab === "talks" && (
-        <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px]">
+        <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px] -ml-5">
           Talks
         </h1>
       )}
 
       {tab === "pay" && (
-        <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px]">
+        <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px] -ml-5">
           Pay
         </h1>
       )}

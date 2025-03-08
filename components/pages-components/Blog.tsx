@@ -1,3 +1,5 @@
+"use client";
+
 // library
 import { useState } from "react";
 import Link from "next/link";
@@ -86,7 +88,7 @@ const Blog = () => {
 
           <motion.div
             key={index}
-            className={`flex items-center justify-between ${
+            className={`flex flex-col md:flex-row items-end md:items-center gap-3 justify-between ${
               activeBlog === blog.id ? "bg-secondary" : ""
             } px-5 py-2 rounded-xl`}
             onClick={() => handleActiveBlog(blog.id)}
@@ -106,7 +108,8 @@ const Blog = () => {
             {activeBlog === blog.id && (
               <Link
                 href={blog.link}
-                className="w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center cursor-pointer"
+                className="w-10 h-10 rounded-full 
+                border border-border bg-white flex items-center justify-center cursor-pointer order-first md:order-last"
                 onClick={goBack}
               >
                 <ArrowUpRight size={20} className="font-medium" />

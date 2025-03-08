@@ -24,3 +24,9 @@ export interface BlogSchema {
   date_published: string;
   link: string;
 }
+
+export interface PaymentSchema {
+  icon: React.ReactNode;
+  token: string;
+  wallet_address: string;
+}

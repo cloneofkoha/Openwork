@@ -56,7 +56,7 @@ const GeneralLayout = () => {
       {/* Nav */}
       <nav
         className="py-2 px-5 bg-secondary border border-border rounded-xl
-       flex items-center justify-center gap-5 max-w-[250px] mx-auto fixed bottom-18 md:bottom-17 left-1/2 -translate-x-1/2 z-50 shadow-sm"
+       flex items-center justify-center gap-5 max-w-[250px] mx-auto fixed bottom-20 md:bottom-17 left-1/2 -translate-x-1/2 z-50 shadow-sm"
       >
         {tabs.map((tab, index) => (
           <Link key={index} href={tab.path} className="font-medium lowercase">
