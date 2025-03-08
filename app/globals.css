@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
+} */
+
+@theme inline {
+  --color-secondary: #f4f4f4;
+  --color-border: #ebebeb;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -15,7 +20,7 @@
 body {
   background: #fff;
   color: #676767;
-  font-family: var(--font-sfpro), Arial, Helvetica, sans-serif;
+  font-family: var(--font-sfpro);
 }
 
 /* font-[family-name:var(--font-geist-sans)] */
