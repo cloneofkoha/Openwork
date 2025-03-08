@@ -12,11 +12,7 @@ import Talks from "../pages-components/Talks";
 import Blog from "../pages-components/Blog";
 import Pay from "../pages-components/Pay";
 
-interface Tabs {
-  id: number;
-  label: string;
-  path: string;
-}
+import { Tabs } from "@/helpers";
 
 const GeneralLayout = () => {
   const searchParams = useSearchParams();
@@ -40,12 +36,27 @@ const GeneralLayout = () => {
     },
   ];
 
+  function generateLocalTimeHTML() {
+    const now = new Date();
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+      hour12: false, // Use 24-hour format
+    });
+    const formattedTime = formatter.format(now);
+
+    return `${formattedTime}`;
+  }
+
+  const timeHTML = generateLocalTimeHTML();
+
   return (
     <div>
       {/* Nav */}
       <nav
         className="py-2 px-5 bg-secondary border border-border rounded-xl
-       fixed bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-5"
+       flex items-center justify-center gap-5 max-w-[250px] mx-auto fixed bottom-18 md:bottom-17 left-1/2 -translate-x-1/2 z-50 shadow-sm"
       >
         {tabs.map((tab, index) => (
           <Link key={index} href={tab.path} className="font-medium lowercase">
@@ -65,7 +76,7 @@ const GeneralLayout = () => {
       </nav>
 
       {/* Main */}
-      <div className="w-full px-5 lg:px-0 md:max-w-2xl 2xl:w-1/2 mx-auto">
+      <div className="w-full px-5 md:px-0 md:max-w-[600px] mx-auto space-y-14 relative pb-40">
         <AnimatePresence mode="wait">
           <motion.div
             key={tab}
@@ -81,6 +92,36 @@ const GeneralLayout = () => {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Footer */}
+      <footer
+        className="md:flex justify-between fixed bottom-5 w-full px-5 md:px-0 md:max-w-[600px] 
+      left-1/2 -translate-x-1/2 text-[#D8D8D8] z-50 hidden"
+      >
+        <p>
+          Designed by <span className="font-bold text-[#676767]">Koha</span>,
+          Built by me
+        </p>
+
+        <p>{timeHTML}</p>
+
+        <p>© Mercy Thaddeus</p>
+      </footer>
+
+      <footer
+        className="md:hidden fixed bottom-2 w-full px-5 md:px-0 md:max-w-[600px] 
+      left-1/2 -translate-x-1/2 text-[#D8D8D8] z-50 space-y-1"
+      >
+        <div className="flex justify-between">
+          <p>
+            Designed by <span className="font-bold text-[#676767]">Koha</span>,
+            Built by me
+          </p>
+          <p>{timeHTML}</p>
+        </div>
+
+        <p className="text-center">© Mercy Thaddeus</p>
+      </footer>
     </div>
   );
 };

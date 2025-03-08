@@ -11,7 +11,7 @@ export default function Home() {
       <div className="relative">
         <NameInfiniteScroll />
 
-        <div className="pt-16 md:pt-24 2xl:pt-32">
+        <div className="pt-16 md:pt-28 2xl:pt-32">
           <GeneralLayout />
         </div>
       </div>

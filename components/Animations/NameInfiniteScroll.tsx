@@ -1,8 +1,11 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { useAnimationControls, motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 const NameInfiniteScroll = () => {
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab") || "home";
   const containerRef = useRef<HTMLDivElement>(null);
   const [textWidth, setTextWidth] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
@@ -78,22 +81,42 @@ const NameInfiniteScroll = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute -top-7 md:-top-15 lg:-top-20 2xl:-top-24 w-full overflow-hidden"
+      className="fixed -top-7 md:-top-15 lg:-top-18 2xl:-top-24 w-full overflow-hidden z-50"
     >
-      <motion.div
-        className="flex whitespace-nowrap"
-        initial={{ x: 0 }}
-        animate={controls}
-      >
-        {/* Generate enough copies to fill the screen with spacing between them */}
-        {Array.from({ length: textCopies }).map((_, index) => (
-          <div key={index} className="text-element mr-10 md:mr-18 lg:mr-10">
-            <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px]">
-              Mercy Thaddeus
-            </h1>
-          </div>
-        ))}
-      </motion.div>
+      {tab === "home" && (
+        <motion.div
+          className="flex whitespace-nowrap"
+          initial={{ x: 0 }}
+          animate={controls}
+        >
+          {/* Generate enough copies to fill the screen with spacing between them */}
+          {Array.from({ length: textCopies }).map((_, index) => (
+            <div key={index} className="text-element mr-10 md:mr-18 lg:mr-10">
+              <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px]">
+                Mercy Thaddeus
+              </h1>
+            </div>
+          ))}
+        </motion.div>
+      )}
+
+      {tab === "blog" && (
+        <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px] -ml-5">
+          Blogs
+        </h1>
+      )}
+
+      {tab === "talks" && (
+        <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px]">
+          Talks
+        </h1>
+      )}
+
+      {tab === "pay" && (
+        <h1 className="font-bold text-secondary text-7xl md:text-9xl lg:text-[165px] 2xl:text-[220px]">
+          Pay
+        </h1>
+      )}
     </div>
   );
 };
