@@ -30,3 +30,10 @@ export interface PaymentSchema {
   token: string;
   wallet_address: string;
 }
+
+export interface TalksSchema {
+  id: number;
+  date: string;
+  title: string;
+  images: string[];
+}

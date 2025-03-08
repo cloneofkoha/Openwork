@@ -63,7 +63,7 @@ const Pay = () => {
   };
 
   return (
-    <div className="lg:space-y-20 md:space-y-36  space-y-20  relative">
+    <div className="lg:space-y-20 md:space-y-36 space-y-20 relative">
       <button
         type="button"
         className="w-10 h-10 rounded-full border border-border bg-white flex items-center justify-center cursor-pointer"
